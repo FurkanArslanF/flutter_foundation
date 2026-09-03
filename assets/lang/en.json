@@ -1,0 +1,59 @@
+{
+    "title": "flutter_app_foundation",
+    "failed": "Failed",
+    "success": "Success",
+    "common": {
+        "search": "Search",
+        "select": "Select"
+    },
+    "phoneNumber": {
+        "title": "Phone",
+        "codeHint": "Code",
+        "codeError": "Please select a phone code",
+        "inputHint": "Phone number"
+    },
+    "auth": {
+        "login": {
+            "title": "Login",
+            "segment": {
+                "password": "With Password",
+                "otp": "With OTP"
+            },
+            "fields": {
+                "usernameOrEmailLabel": "Username/Email*",
+                "usernameOrEmailHint": "Username/Email",
+                "passwordLabel": "Password*",
+                "passwordHint": "Password",
+                "usernameLabel": "Username*",
+                "usernameHint": "Username"
+            },
+            "actions": {
+                "forgotPassword": "Forgot Password?",
+                "login": "Login",
+                "sendOtpCode": "Send Verification Code"
+            }
+        },
+        "forgotPassword": {
+            "title": "Forgot Password",
+            "description": "Enter your username and the email address associated with your account, and we will send you a reset code.",
+            "fields": {
+                "usernameLabel": "Username*",
+                "usernameHint": "Username",
+                "emailLabel": "Email*",
+                "emailHint": "Email"
+            },
+            "actions": {
+                "sendResetCode": "Send Reset Code"
+            }
+        },
+        "validation": {
+            "enterUsernameAndPassword": "Please enter username and password",
+            "enterUsernameAndEmail": "Please enter username and email address"
+        },
+        "messages": {
+            "loginSuccess": "Login Successful",
+            "unexpectedError": "An unexpected error occurred",
+            "passwordResetRequestSent": "Password reset request has been sent"
+        }
+    }
+}

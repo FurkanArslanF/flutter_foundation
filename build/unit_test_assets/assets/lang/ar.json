@@ -1,0 +1,59 @@
+{
+    "title": "flutter_app_foundation",
+    "failed": "فشل",
+    "success": "نجاح",
+    "common": {
+        "search": "بحث",
+        "select": "اختر"
+    },
+    "phoneNumber": {
+        "title": "الهاتف",
+        "codeHint": "اختر الرمز",
+        "codeError": "يرجى اختيار رمز الهاتف",
+        "inputHint": "رقم الهاتف"
+    },
+    "auth": {
+        "login": {
+            "title": "تسجيل الدخول",
+            "segment": {
+                "password": "باستخدام كلمة المرور",
+                "otp": "باستخدام OTP"
+            },
+            "fields": {
+                "usernameOrEmailLabel": "اسم المستخدم/البريد الإلكتروني*",
+                "usernameOrEmailHint": "اسم المستخدم/البريد الإلكتروني",
+                "passwordLabel": "كلمة المرور*",
+                "passwordHint": "كلمة المرور",
+                "usernameLabel": "اسم المستخدم*",
+                "usernameHint": "اسم المستخدم"
+            },
+            "actions": {
+                "forgotPassword": "هل نسيت كلمة المرور؟",
+                "login": "تسجيل الدخول",
+                "sendOtpCode": "إرسال رمز التحقق"
+            }
+        },
+        "forgotPassword": {
+            "title": "نسيت كلمة المرور",
+            "description": "أدخل اسم المستخدم والبريد الإلكتروني المرتبط بحسابك وسنرسل لك رمز إعادة التعيين.",
+            "fields": {
+                "usernameLabel": "اسم المستخدم*",
+                "usernameHint": "اسم المستخدم",
+                "emailLabel": "البريد الإلكتروني*",
+                "emailHint": "البريد الإلكتروني"
+            },
+            "actions": {
+                "sendResetCode": "إرسال رمز إعادة التعيين"
+            }
+        },
+        "validation": {
+            "enterUsernameAndPassword": "يرجى إدخال اسم المستخدم وكلمة المرور",
+            "enterUsernameAndEmail": "يرجى إدخال اسم المستخدم والبريد الإلكتروني"
+        },
+        "messages": {
+            "loginSuccess": "تم تسجيل الدخول بنجاح",
+            "unexpectedError": "حدث خطأ غير متوقع",
+            "passwordResetRequestSent": "تم إرسال طلب إعادة تعيين كلمة المرور"
+        }
+    }
+}

@@ -1,0 +1,13 @@
+targets:
+  $default:
+    sources:
+      - lib/**
+      - $package$
+
+    builders:
+      swagger_dart_code_generator:
+        options:
+          input_folder: "lib/generated/swagger"
+          output_folder: "lib/generated"
+          build_only_models: true
+          separate_models: true

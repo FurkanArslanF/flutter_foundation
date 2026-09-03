@@ -1,0 +1,59 @@
+{
+    "title": "flutter_app_foundation",
+    "failed": "Başarısız",
+    "success": "Başarılı",
+    "common": {
+        "search": "Ara",
+        "select": "Seçiniz"
+    },
+    "phoneNumber": {
+        "title": "Telefon",
+        "codeHint": "Kod",
+        "codeError": "Telefon kodu seçiniz",
+        "inputHint": "Telefon numarası"
+    },
+    "auth": {
+        "login": {
+            "title": "Giriş Yap",
+            "segment": {
+                "password": "Şifre ile",
+                "otp": "OTP ile"
+            },
+            "fields": {
+                "usernameOrEmailLabel": "Kullanıcı Adı/Email*",
+                "usernameOrEmailHint": "Kullanıcı Adı/Email",
+                "passwordLabel": "Parola*",
+                "passwordHint": "Parola",
+                "usernameLabel": "Kullanıcı Adı*",
+                "usernameHint": "Kullanıcı Adı"
+            },
+            "actions": {
+                "forgotPassword": "Şifremi Unuttum?",
+                "login": "Giriş Yap",
+                "sendOtpCode": "Doğrulama Kodu Gönder"
+            }
+        },
+        "forgotPassword": {
+            "title": "Şifremi Unuttum",
+            "description": "Kullanıcı adınızı ve hesabınıza ait e-posta adresini girin, size bir sıfırlama kodu gönderelim.",
+            "fields": {
+                "usernameLabel": "Kullanıcı Adı*",
+                "usernameHint": "Kullanıcı Adı",
+                "emailLabel": "E-Posta*",
+                "emailHint": "E-Posta"
+            },
+            "actions": {
+                "sendResetCode": "Sıfırlama Kodu Gönder"
+            }
+        },
+        "validation": {
+            "enterUsernameAndPassword": "Lütfen kullanıcı adı ve şifreyi giriniz",
+            "enterUsernameAndEmail": "Lütfen kullanıcı adı ve e-posta adresini giriniz"
+        },
+        "messages": {
+            "loginSuccess": "Giriş Başarılı",
+            "unexpectedError": "Beklenmeyen bir hata oluştu",
+            "passwordResetRequestSent": "Şifre sıfırlama isteği gönderildi"
+        }
+    }
+}
