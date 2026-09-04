@@ -1,45 +1,36 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter_app_foundation/env.dart';
-
 Future<void> main() async {
+  final swaggerUrl = _readSwaggerUrl();
+
   final swaggerFile = File('lib/generated/swagger/common.swagger');
 
-  if (swaggerFile.existsSync()) {
-    jsonDecode(await swaggerFile.readAsString());
-    // ignore: avoid_print
-    print('Using local Swagger: ${swaggerFile.path}');
-  } else {
-    final swaggerUrl = Env.swaggerUrl;
-    if (swaggerUrl.isEmpty) {
-      throw StateError(
-        'Local Swagger file not found. Set SWAGGER_URL in .env.dev or .env.prod.',
+  // 1. Swagger indir
+  final client = HttpClient();
+
+  try {
+    final request = await client.getUrl(Uri.parse(swaggerUrl));
+    final response = await request.close();
+
+    if (response.statusCode != HttpStatus.ok) {
+      throw Exception(
+        'Swagger download failed: ${response.statusCode}',
       );
     }
-    final client = HttpClient();
 
-    try {
-      final request = await client.getUrl(Uri.parse(swaggerUrl));
-      final response = await request.close();
+    final body = await response.transform(utf8.decoder).join();
 
-      if (response.statusCode != HttpStatus.ok) {
-        throw Exception(
-          'Swagger download failed: ${response.statusCode}',
-        );
-      }
+    // JSON geçerli mi kontrol et
+    jsonDecode(body);
 
-      final body = await response.transform(utf8.decoder).join();
-      jsonDecode(body);
+    await swaggerFile.parent.create(recursive: true);
+    await swaggerFile.writeAsString(body);
 
-      await swaggerFile.parent.create(recursive: true);
-      await swaggerFile.writeAsString(body);
-
-      // ignore: avoid_print
-      print('Swagger downloaded');
-    } finally {
-      client.close();
-    }
+    // ignore: avoid_print
+    print('✅ Swagger downloaded');
+  } finally {
+    client.close();
   }
 
   // 2. build_runner çalıştır
@@ -75,4 +66,43 @@ Future<void> main() async {
   if (dioResult.exitCode != 0) {
     exit(dioResult.exitCode);
   }
+}
+
+String _readSwaggerUrl() {
+  final environmentUrl = Platform.environment['SWAGGER_URL'];
+  if (environmentUrl != null && environmentUrl.isNotEmpty) {
+    return environmentUrl;
+  }
+
+  final envFile = File('.env.dev');
+  if (!envFile.existsSync()) {
+    throw StateError('SWAGGER_URL is not set and .env.dev was not found');
+  }
+
+  for (final line in envFile.readAsLinesSync()) {
+    final trimmedLine = line.trim();
+    if (trimmedLine.isEmpty || trimmedLine.startsWith('#')) {
+      continue;
+    }
+
+    final separatorIndex = trimmedLine.indexOf('=');
+    if (separatorIndex == -1) {
+      continue;
+    }
+
+    final key = trimmedLine.substring(0, separatorIndex).trim();
+    if (key != 'SWAGGER_URL') {
+      continue;
+    }
+
+    final value = trimmedLine.substring(separatorIndex + 1).trim();
+    if (value.length >= 2 &&
+        ((value.startsWith("'") && value.endsWith("'")) ||
+            (value.startsWith('"') && value.endsWith('"')))) {
+      return value.substring(1, value.length - 1);
+    }
+    return value;
+  }
+
+  throw StateError('SWAGGER_URL was not found in .env.dev');
 }
